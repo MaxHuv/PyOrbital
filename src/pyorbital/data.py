@@ -1,4 +1,6 @@
 # data.py
+""" Module providing the data inherent to each body used"""
+
 PLANETARY_MU = {
     "Earth": 398600.4418,  # km^3/s^2
     "Mars": 42828.3,
@@ -9,7 +11,7 @@ PLANETARY_MU = {
     "Saturn": 37931187,
     "Uranus": 5793939,
     "Neptune": 6836529,
-    "Pluto": 871.6
+    "Pluto": 871.6,
 }
 
 PLANETARY_RADII = {
@@ -22,5 +24,5 @@ PLANETARY_RADII = {
     "Saturn": 58232,
     "Uranus": 25362,
     "Neptune": 24622,
-    "Pluto": 1188.3
+    "Pluto": 1188.3,
 }

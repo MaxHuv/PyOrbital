@@ -1,14 +1,25 @@
 # pyorbital.py
+""" Main file containing the main function"""
+import calculation as cc
 from data import PLANETARY_MU, PLANETARY_RADII
-from calculation import *
+
+
 
 def get_body_parameters():
+    """Retrieve selected body data
+    Args:1
+
+    Returns:
+        float: Gravitational parameter (km^3/s^2).
+        float: Body Radius (km).
+    """
     print("Select a planetary body:")
     for i, body in enumerate(PLANETARY_MU.keys(), start=1):
         print(f"{i}. {body}")
     choice = int(input("Enter the number corresponding to the body: "))
     body_name = list(PLANETARY_MU.keys())[choice - 1]
     return PLANETARY_MU[body_name], PLANETARY_RADII[body_name]
+
 
 def main():
     print("Orbital Mechanics Calculator")
@@ -26,75 +37,114 @@ def main():
 
     if choice == 1:
         mu, radius = get_body_parameters()
-        r = float(input(f"Enter the orbital radius from the center of the body [km] (or altitude above surface [km]): "))
-        use_altitude = input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        r = float(
+            input("Enter the orbital radius from the center of the body [km] \
+                (or altitude above surface [km]): ")
+        )
+        use_altitude = (
+            input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        )
         if use_altitude:
             r += radius
-        velocity = orbital_velocity(mu, r)
+        velocity = cc.orbital_velocity(mu, r)
         print(f"Orbital velocity: {velocity:.2f} km/s")
 
     elif choice == 2:
         mu, radius = get_body_parameters()
-        a = float(input(f"Enter the semi-major axis [km] (or altitude above surface [km]): "))
-        use_altitude = input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        a = float(
+            input("Enter the semi-major axis [km] (or altitude above surface [km]): ")
+        )
+        use_altitude = (
+            input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        )
         if use_altitude:
             a += radius
-        period = orbital_period(mu, a)
+        period = cc.orbital_period(mu, a)
         print(f"Orbital period: {period:.2f} seconds")
 
     elif choice == 3:
         mu, radius = get_body_parameters()
-        r = float(input(f"Enter the distance from the center of the body [km] (or altitude above surface [km]): "))
-        use_altitude = input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        r = float(
+            input("Enter the distance from the center of the body [km]\
+                  (or altitude above surface [km]): ")
+        )
+        use_altitude = (
+            input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        )
         if use_altitude:
             r += radius
-        velocity = escape_velocity(mu, r)
+        velocity = cc.escape_velocity(mu, r)
         print(f"Escape velocity: {velocity:.2f} km/s")
 
     elif choice == 4:
         mu, radius = get_body_parameters()
-        r = float(input(f"Enter the orbital radius [km] (or altitude above surface [km]): "))
-        use_altitude = input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        r = float(
+            input("Enter the orbital radius [km] (or altitude above surface [km]): ")
+        )
+        use_altitude = (
+            input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
+        )
         if use_altitude:
             r += radius
         v = float(input("Enter the orbital velocity [km/s]: "))
-        energy = specific_orbital_energy(mu, r, v)
+        energy = cc.specific_orbital_energy(mu, r, v)
         print(f"Specific orbital energy: {energy:.2f} km^2/s^2")
 
     elif choice == 5:
         mu, radius = get_body_parameters()
-        r1 = float(input(f"Enter the radius of the initial orbit [km] (or altitude above surface [km]): "))
-        use_altitude1 = input("Did you enter an altitude for the initial orbit? (yes/no): ").strip().lower() == "yes"
+        r1 = float(
+            input(
+                "Enter the radius of the initial orbit [km] (or altitude above surface [km]): "
+            )
+        )
+        use_altitude1 = (
+            input("Did you enter an altitude for the initial orbit? (yes/no): ")
+            .strip()
+            .lower()
+            == "yes"
+        )
         if use_altitude1:
             r1 += radius
-        r2 = float(input(f"Enter the radius of the final orbit [km] (or altitude above surface [km]): "))
-        use_altitude2 = input("Did you enter an altitude for the final orbit? (yes/no): ").strip().lower() == "yes"
+        r2 = float(
+            input(
+                "Enter the radius of the final orbit [km] (or altitude above surface [km]): "
+            )
+        )
+        use_altitude2 = (
+            input("Did you enter an altitude for the final orbit? (yes/no): ")
+            .strip()
+            .lower()
+            == "yes"
+        )
         if use_altitude2:
             r2 += radius
-        delta_v1, delta_v2 = hohmann_transfer_delta_v(mu, r1, r2)
+        delta_v1, delta_v2 = cc.hohmann_transfer_delta_v(mu, r1, r2)
         print(f"Hohmann transfer delta-v1: {delta_v1:.2f} km/s")
         print(f"Hohmann transfer delta-v2: {delta_v2:.2f} km/s")
 
     elif choice == 6:
         period = float(input("Enter the orbital period [s]: "))
-        omega = float(input("Enter the angular velocity of the planet's rotation [rad/s]: "))
-        revisit = revisit_time(period, omega)
+        omega = float(
+            input("Enter the angular velocity of the planet's rotation [rad/s]: ")
+        )
+        revisit = cc.revisit_time(period, omega)
         print(f"Revisit time: {revisit:.2f} seconds")
 
     elif choice == 7:
         altitude = float(input("Enter the satellite altitude [km]: "))
         fov = float(input("Enter the field of view [degrees]: "))
-        swath = swath_width(altitude, fov)
+        swath = cc.swath_width(altitude, fov)
         print(f"Swath width: {swath:.2f} km")
 
     elif choice == 8:
         v = float(input("Enter the orbital velocity [km/s]: "))
         delta_i = float(input("Enter the inclination change [degrees]: "))
-        delta_v = plane_change_delta_v(v, delta_i)
+        delta_v = cc.plane_change_delta_v(v, delta_i)
         print(f"Delta-V for plane change: {delta_v:.2f} km/s")
 
     else:
         print("Invalid choice. Please select a valid option.")
+
 
 if __name__ == "__main__":
     main()

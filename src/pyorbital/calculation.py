@@ -1,5 +1,7 @@
 # calculation.py
+""" Module providing functions to make the calculations"""
 import math
+
 
 def orbital_velocity(mu, r):
     """Calculate the orbital velocity.
@@ -11,6 +13,7 @@ def orbital_velocity(mu, r):
     """
     return math.sqrt(mu / r)
 
+
 def orbital_period(mu, a):
     """Calculate the orbital period.
     Args:
@@ -20,6 +23,7 @@ def orbital_period(mu, a):
         float: Orbital period (s).
     """
     return 2 * math.pi * math.sqrt(a**3 / mu)
+
 
 def escape_velocity(mu, r):
     """Calculate the escape velocity.
@@ -31,6 +35,7 @@ def escape_velocity(mu, r):
     """
     return math.sqrt(2 * mu / r)
 
+
 def specific_orbital_energy(mu, r, v):
     """Calculate the specific orbital energy.
     Args:
@@ -41,6 +46,7 @@ def specific_orbital_energy(mu, r, v):
         float: Specific orbital energy (km^2/s^2).
     """
     return (v**2 / 2) - (mu / r)
+
 
 def hohmann_transfer_delta_v(mu, r1, r2):
     """Calculate the delta-V for a Hohmann transfer.
@@ -60,6 +66,7 @@ def hohmann_transfer_delta_v(mu, r1, r2):
     delta_v2 = v2 - v_transfer2
     return delta_v1, delta_v2
 
+
 def revisit_time(period, omega):
     """Calculate the revisit time.
     Args:
@@ -70,6 +77,7 @@ def revisit_time(period, omega):
     """
     return 2 * math.pi / abs(2 * math.pi / period - omega)
 
+
 def swath_width(altitude, fov):
     """Calculate the swath width.
     Args:
@@ -79,6 +87,7 @@ def swath_width(altitude, fov):
         float: Swath width (km).
     """
     return 2 * altitude * math.tan(math.radians(fov / 2))
+
 
 def plane_change_delta_v(v, delta_i):
     """Calculate the delta-V for a plane change.
