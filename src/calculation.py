@@ -60,22 +60,22 @@ def hohmann_transfer_delta_v(mu, r1, r2):
     a_transfer = (r1 + r2) / 2
     v1 = math.sqrt(mu / r1)
     v2 = math.sqrt(mu / r2)
-    v_transfer1 = math.sqrt(2 * mu / r1 - mu / a_transfer)
-    v_transfer2 = math.sqrt(2 * mu / r2 - mu / a_transfer)
-    delta_v1 = v_transfer1 - v1
-    delta_v2 = v2 - v_transfer2
+    v_transfer1 = math.sqrt(r2 / a_transfer) - 1
+    v_transfer2 = 1 - math.sqrt(r1 / a_transfer)
+    delta_v1 = v1 * v_transfer1
+    delta_v2 = v2 * v_transfer2
     return delta_v1, delta_v2
 
 
-def revisit_time(period, omega):
-    """Calculate the revisit time.
+def eccentricity(rp, ra):
+    """Calculate the eccentricity of an orbit.
     Args:
-        period (float): Orbital period (s).
-        omega (float): Angular velocity of the planet's rotation (rad/s).
+        rp (float): Radius at periapsis (km).
+        ra (float): Radius at apoapsis (km).
     Returns:
-        float: Revisit time (s).
+        float: Eccentricity (/).
     """
-    return 2 * math.pi / abs(2 * math.pi / period - omega)
+    return (ra - rp) / (ra + rp)
 
 
 def swath_width(altitude, fov):

@@ -4,7 +4,6 @@ import calculation as cc
 from data import PLANETARY_MU, PLANETARY_RADII
 
 
-
 def get_body_parameters():
     """Retrieve selected body data
     Args:1
@@ -22,24 +21,27 @@ def get_body_parameters():
 
 
 def main():
-    print("Orbital Mechanics Calculator")
+    print("__________Orbital Mechanics Calculator__________")
     print("Choose a calculation:")
     print("1. Orbital Velocity")
     print("2. Orbital Period")
     print("3. Escape Velocity")
     print("4. Specific Orbital Energy")
     print("5. Hohmann Transfer Delta-V")
-    print("6. Revisit Time")
+    print("6. Eccentricity")
     print("7. Swath Width")
     print("8. Plane Change Delta-V")
+    print("________________________________________________")
 
     choice = int(input("Enter the number of your choice: "))
 
     if choice == 1:
         mu, radius = get_body_parameters()
         r = float(
-            input("Enter the orbital radius from the center of the body [km] \
-                (or altitude above surface [km]): ")
+            input(
+                "Enter the orbital radius from the center of the body [km] \
+                (or altitude above surface [km]): "
+            )
         )
         use_altitude = (
             input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
@@ -65,8 +67,10 @@ def main():
     elif choice == 3:
         mu, radius = get_body_parameters()
         r = float(
-            input("Enter the distance from the center of the body [km]\
-                  (or altitude above surface [km]): ")
+            input(
+                "Enter the distance from the center of the body [km]\
+                  (or altitude above surface [km]): "
+            )
         )
         use_altitude = (
             input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
@@ -123,12 +127,29 @@ def main():
         print(f"Hohmann transfer delta-v2: {delta_v2:.2f} km/s")
 
     elif choice == 6:
-        period = float(input("Enter the orbital period [s]: "))
-        omega = float(
-            input("Enter the angular velocity of the planet's rotation [rad/s]: ")
+        mu, radius = get_body_parameters()
+        r1 = float(
+            input(
+                "Enter the radius of the periapsis [km] (or altitude above surface at periapsis [km]): "
+            )
         )
-        revisit = cc.revisit_time(period, omega)
-        print(f"Revisit time: {revisit:.2f} seconds")
+        use_altitude1 = (
+            input("Did you enter an altitude ? (yes/no): ").strip().lower() == "yes"
+        )
+        if use_altitude1:
+            r1 += radius
+        r2 = float(
+            input(
+                "Enter the radius of the apoapsis [km] (or altitude above surface at apoapsis [km]): "
+            )
+        )
+        use_altitude2 = (
+            input("Did you enter an altitude ? (yes/no): ").strip().lower() == "yes"
+        )
+        if use_altitude2:
+            r2 += radius
+        ecc = cc.eccentricity(r1, r2)
+        print(f"Eccentricity: {ecc:.2f}")
 
     elif choice == 7:
         altitude = float(input("Enter the satellite altitude [km]: "))
