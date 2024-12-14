@@ -40,7 +40,7 @@ def main():
 
     if choice == 1:
         mu, radius = get_body_parameters()
-        r = float(
+        r1 = float(
             input(
                 "Enter the orbital radius from the center of the body [km] \
                 (or altitude above surface [km]): "
@@ -50,8 +50,8 @@ def main():
             input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
         )
         if use_altitude:
-            r += radius
-        output1 = cc.orbital_velocity(mu, r)
+            r1 += radius
+        output1 = cc.orbital_velocity(mu, r1)
         print(f"Orbital velocity: {output1:.2f} km/s")
 
     elif choice == 2:
@@ -69,7 +69,7 @@ def main():
 
     elif choice == 3:
         mu, radius = get_body_parameters()
-        r = float(
+        r1 = float(
             input(
                 "Enter the distance from the center of the body [km]\
                   (or altitude above surface [km]): "
@@ -79,22 +79,22 @@ def main():
             input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
         )
         if use_altitude:
-            r += radius
-        output1 = cc.escape_velocity(mu, r)
+            r1 += radius
+        output1 = cc.escape_velocity(mu, r1)
         print(f"Escape velocity: {output1:.2f} km/s")
 
     elif choice == 4:
         mu, radius = get_body_parameters()
-        r = float(
+        r1 = float(
             input("Enter the orbital radius [km] (or altitude above surface [km]): ")
         )
         use_altitude = (
             input("Did you enter an altitude? (yes/no): ").strip().lower() == "yes"
         )
         if use_altitude:
-            r += radius
+            r1 += radius
         v = float(input("Enter the orbital velocity [km/s]: "))
-        output1 = cc.specific_orbital_energy(mu, r, v)
+        output1 = cc.specific_orbital_energy(mu, r1, v)
         print(f"Specific orbital energy: {output1:.2f} km^2/s^2")
 
     elif choice == 5:
