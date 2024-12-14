@@ -4,9 +4,9 @@ PyOrbital is a simple tool used to perform elementary calculations for orbital m
 
 ## Badges
 
-![Test Status](https://github.com/Nicowalk/PyDemineur/actions/workflows/ci.yml/badge.svg)
-![Test Status](https://github.com/Nicowalk/PyDemineur/actions/workflows/documentation.yml/badge.svg)
-![Coverage Status](https://coveralls.io/repos/github/Nicowalk/PyDemineur/badge.svg?branch=main)
+![Test Status](https://github.com//MaxHuv/PyOrbital/actions/workflows/ci.yml/badge.svg)
+![Test Status](https://github.com//MaxHuv/PyOrbital/actions/workflows/generate-docs.yml/badge.svg)
+![Coverage Status](https://coveralls.io/repos/github/MaxHuv/PyOrbital/badge.svg?branch=main)
 
 ## Documentation
 
