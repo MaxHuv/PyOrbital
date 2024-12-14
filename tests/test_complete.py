@@ -142,6 +142,13 @@ def test_swath_width(mock_print, mock_input):
     main()
     output = "\n".join(call.args[0] for call in mock_print.call_args_list)
     assert "Delta-V for plane change: " in output
+
+@patch("builtins.input", side_effect=["12"])  # Other
+@patch("builtins.print")
+def test_other_choice(mock_print, mock_input):
+    main()
+    output = "\n".join(call.args[0] for call in mock_print.call_args_list)
+    assert "Invalid choice " in output
     
 if __name__ == "__main__":
     pytest.main()
