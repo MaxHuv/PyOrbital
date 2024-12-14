@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calculation &mdash; PyOrbital 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyOrbital
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyOrbital</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">calculation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for calculation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># calculation.py</span>
+<span class="sd">&quot;&quot;&quot; Module providing functions to make the calculations&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<div class="viewcode-block" id="orbital_velocity">
+<a class="viewcode-back" href="../calculation.html#calculation.orbital_velocity">[docs]</a>
+<span class="k">def</span> <span class="nf">orbital_velocity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the orbital velocity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mu (float): Gravitational parameter (km^3/s^2).</span>
+<span class="sd">        r (float): Orbital radius (km).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Orbital velocity (km/s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="orbital_period">
+<a class="viewcode-back" href="../calculation.html#calculation.orbital_period">[docs]</a>
+<span class="k">def</span> <span class="nf">orbital_period</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the orbital period.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mu (float): Gravitational parameter (km^3/s^2).</span>
+<span class="sd">        a (float): Semi-major axis (km).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Orbital period (s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">3</span> <span class="o">/</span> <span class="n">mu</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="escape_velocity">
+<a class="viewcode-back" href="../calculation.html#calculation.escape_velocity">[docs]</a>
+<span class="k">def</span> <span class="nf">escape_velocity</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the escape velocity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mu (float): Gravitational parameter (km^3/s^2).</span>
+<span class="sd">        r (float): Distance from the center of the body (km).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Escape velocity (km/s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="specific_orbital_energy">
+<a class="viewcode-back" href="../calculation.html#calculation.specific_orbital_energy">[docs]</a>
+<span class="k">def</span> <span class="nf">specific_orbital_energy</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the specific orbital energy.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mu (float): Gravitational parameter (km^3/s^2).</span>
+<span class="sd">        r (float): Orbital radius (km).</span>
+<span class="sd">        v (float): Orbital velocity (km/s).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Specific orbital energy (km^2/s^2).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="n">r</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="hohmann_transfer_delta_v">
+<a class="viewcode-back" href="../calculation.html#calculation.hohmann_transfer_delta_v">[docs]</a>
+<span class="k">def</span> <span class="nf">hohmann_transfer_delta_v</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the delta-V for a Hohmann transfer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mu (float): Gravitational parameter (km^3/s^2).</span>
+<span class="sd">        r1 (float): Radius of the initial orbit (km).</span>
+<span class="sd">        r2 (float): Radius of the final orbit (km).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: Delta-V for the first and second burns (km/s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a_transfer</span> <span class="o">=</span> <span class="p">(</span><span class="n">r1</span> <span class="o">+</span> <span class="n">r2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">v1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="n">r1</span><span class="p">)</span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span> <span class="o">/</span> <span class="n">r2</span><span class="p">)</span>
+    <span class="n">v_transfer1</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r2</span> <span class="o">/</span> <span class="n">a_transfer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">v_transfer2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">r1</span> <span class="o">/</span> <span class="n">a_transfer</span><span class="p">)</span>
+    <span class="n">delta_v1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="n">v_transfer1</span>
+    <span class="n">delta_v2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">*</span> <span class="n">v_transfer2</span>
+    <span class="k">return</span> <span class="n">delta_v1</span><span class="p">,</span> <span class="n">delta_v2</span></div>
+
+
+
+<div class="viewcode-block" id="eccentricity">
+<a class="viewcode-back" href="../calculation.html#calculation.eccentricity">[docs]</a>
+<span class="k">def</span> <span class="nf">eccentricity</span><span class="p">(</span><span class="n">rp</span><span class="p">,</span> <span class="n">ra</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the eccentricity of an orbit.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rp (float): Radius at periapsis (km).</span>
+<span class="sd">        ra (float): Radius at apoapsis (km).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Eccentricity (/).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">ra</span> <span class="o">-</span> <span class="n">rp</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ra</span> <span class="o">+</span> <span class="n">rp</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="swath_width">
+<a class="viewcode-back" href="../calculation.html#calculation.swath_width">[docs]</a>
+<span class="k">def</span> <span class="nf">swath_width</span><span class="p">(</span><span class="n">altitude</span><span class="p">,</span> <span class="n">fov</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the swath width.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        altitude (float): Satellite altitude (km).</span>
+<span class="sd">        fov (float): Field of view (degrees).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Swath width (km).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">altitude</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">fov</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="plane_change_delta_v">
+<a class="viewcode-back" href="../calculation.html#calculation.plane_change_delta_v">[docs]</a>
+<span class="k">def</span> <span class="nf">plane_change_delta_v</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">delta_i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the delta-V for a plane change.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        v (float): Orbital velocity (km/s).</span>
+<span class="sd">        delta_i (float): Inclination change (degrees).</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Delta-V required for the plane change (km/s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">delta_i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Maxime Huvelin &amp; Samuel L&#39;hermitte.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
