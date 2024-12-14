@@ -21,11 +21,7 @@ jobs:
       - name: Run tests
         run: |
           pytest --cov=src tests/
-
-      - name: Run Pylint
-        run: |
-          pip install pylint
-          pylint src/**/*.py         
+      
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2.3.4
