@@ -148,7 +148,7 @@ def test_swath_width(mock_print, mock_input):
 def test_other_choice(mock_print, mock_input):
     main()
     output = "\n".join(call.args[0] for call in mock_print.call_args_list)
-    assert "Invalid choice " in output
+    assert "Invalid choice" in output
     
 if __name__ == "__main__":
     pytest.main()
