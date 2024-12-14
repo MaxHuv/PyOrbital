@@ -21,6 +21,9 @@ def get_body_parameters():
 
 
 def main():
+    """
+    Main Function for PyOrbital
+    """
     print("__________Orbital Mechanics Calculator__________")
     print("Choose a calculation:")
     print("1. Orbital Velocity")
@@ -48,8 +51,8 @@ def main():
         )
         if use_altitude:
             r += radius
-        velocity = cc.orbital_velocity(mu, r)
-        print(f"Orbital velocity: {velocity:.2f} km/s")
+        output1 = cc.orbital_velocity(mu, r)
+        print(f"Orbital velocity: {output1:.2f} km/s")
 
     elif choice == 2:
         mu, radius = get_body_parameters()
@@ -61,8 +64,8 @@ def main():
         )
         if use_altitude:
             a += radius
-        period = cc.orbital_period(mu, a)
-        print(f"Orbital period: {period:.2f} seconds")
+        output1 = cc.orbital_period(mu, a)
+        print(f"Orbital period: {output1:.2f} seconds")
 
     elif choice == 3:
         mu, radius = get_body_parameters()
@@ -77,8 +80,8 @@ def main():
         )
         if use_altitude:
             r += radius
-        velocity = cc.escape_velocity(mu, r)
-        print(f"Escape velocity: {velocity:.2f} km/s")
+        output1 = cc.escape_velocity(mu, r)
+        print(f"Escape velocity: {output1:.2f} km/s")
 
     elif choice == 4:
         mu, radius = get_body_parameters()
@@ -91,8 +94,8 @@ def main():
         if use_altitude:
             r += radius
         v = float(input("Enter the orbital velocity [km/s]: "))
-        energy = cc.specific_orbital_energy(mu, r, v)
-        print(f"Specific orbital energy: {energy:.2f} km^2/s^2")
+        output1 = cc.specific_orbital_energy(mu, r, v)
+        print(f"Specific orbital energy: {output1:.2f} km^2/s^2")
 
     elif choice == 5:
         mu, radius = get_body_parameters()
@@ -122,9 +125,9 @@ def main():
         )
         if use_altitude2:
             r2 += radius
-        delta_v1, delta_v2 = cc.hohmann_transfer_delta_v(mu, r1, r2)
-        print(f"Hohmann transfer delta-v1: {delta_v1:.2f} km/s")
-        print(f"Hohmann transfer delta-v2: {delta_v2:.2f} km/s")
+        output1, output2 = cc.hohmann_transfer_delta_v(mu, r1, r2)
+        print(f"Hohmann transfer delta-v1: {output1:.2f} km/s")
+        print(f"Hohmann transfer delta-v2: {output2:.2f} km/s")
 
     elif choice == 6:
         mu, radius = get_body_parameters()
@@ -148,20 +151,20 @@ def main():
         )
         if use_altitude2:
             r2 += radius
-        ecc = cc.eccentricity(r1, r2)
-        print(f"Eccentricity: {ecc:.2f}")
+        output1 = cc.eccentricity(r1, r2)
+        print(f"Eccentricity: {output1:.2f}")
 
     elif choice == 7:
         altitude = float(input("Enter the satellite altitude [km]: "))
         fov = float(input("Enter the field of view [degrees]: "))
-        swath = cc.swath_width(altitude, fov)
-        print(f"Swath width: {swath:.2f} km")
+        output1 = cc.swath_width(altitude, fov)
+        print(f"Swath width: {output1:.2f} km")
 
     elif choice == 8:
         v = float(input("Enter the orbital velocity [km/s]: "))
         delta_i = float(input("Enter the inclination change [degrees]: "))
-        delta_v = cc.plane_change_delta_v(v, delta_i)
-        print(f"Delta-V for plane change: {delta_v:.2f} km/s")
+        output1 = cc.plane_change_delta_v(v, delta_i)
+        print(f"Delta-V for plane change: {output1:.2f} km/s")
 
     else:
         print("Invalid choice. Please select a valid option.")
