@@ -3,7 +3,7 @@
 import math
 
 
-def orbital_velocity(mu, r):
+def orbital_velocity(mu: float, r:float):
     """
     Calculate the orbital velocity.
 
@@ -16,7 +16,7 @@ def orbital_velocity(mu, r):
     return math.sqrt(mu / r)
 
 
-def orbital_period(mu, a):
+def orbital_period(mu: float, a: float):
     """
     Calculate the orbital period.
 
@@ -29,7 +29,7 @@ def orbital_period(mu, a):
     return 2 * math.pi * math.sqrt(a**3 / mu)
 
 
-def escape_velocity(mu, r):
+def escape_velocity(mu: float, r: float):
     """
     Calculate the escape velocity.
 
@@ -42,7 +42,7 @@ def escape_velocity(mu, r):
     return math.sqrt(2 * mu / r)
 
 
-def specific_orbital_energy(mu, r, v):
+def specific_orbital_energy(mu: float, r: float, v: float):
     """
     Calculate the specific orbital energy.
 
@@ -56,7 +56,7 @@ def specific_orbital_energy(mu, r, v):
     return (v**2 / 2) - (mu / r)
 
 
-def hohmann_transfer_delta_v(mu, r1, r2):
+def hohmann_transfer_delta_v(mu: float, r1: float, r2:float):
     """
     Calculate the delta-V for a Hohmann transfer.
 
@@ -77,7 +77,7 @@ def hohmann_transfer_delta_v(mu, r1, r2):
     return delta_v1, delta_v2
 
 
-def eccentricity(rp, ra):
+def eccentricity(rp: float, ra:float):
     """
     Calculate the eccentricity of an orbit.
 
@@ -90,7 +90,7 @@ def eccentricity(rp, ra):
     return (ra - rp) / (ra + rp)
 
 
-def swath_width(altitude, fov):
+def swath_width(altitude: float, fov: float):
     """
     Calculate the swath width.
 
@@ -103,7 +103,7 @@ def swath_width(altitude, fov):
     return 2 * altitude * math.tan(math.radians(fov / 2))
 
 
-def plane_change_delta_v(v, delta_i):
+def plane_change_delta_v(v: float, delta_i: float):
     """
     Calculate the delta-V for a plane change.
     
