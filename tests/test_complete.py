@@ -135,6 +135,13 @@ def test_swath_width(mock_print, mock_input):
     main()
     output = "\n".join(call.args[0] for call in mock_print.call_args_list)
     assert "Swath width: 267.95 km" in output
+
+@patch("builtins.input", side_effect=["8", "7.62", "30"])  # Delta-V for plane change
+@patch("builtins.print")
+def test_swath_width(mock_print, mock_input):
+    main()
+    output = "\n".join(call.args[0] for call in mock_print.call_args_list)
+    assert "Delta-V for plane change: " in output
     
 if __name__ == "__main__":
     pytest.main()
