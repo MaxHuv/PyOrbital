@@ -4,7 +4,9 @@ import math
 
 
 def orbital_velocity(mu, r):
-    """Calculate the orbital velocity.
+    """
+    Calculate the orbital velocity.
+
     Args:
         mu (float): Gravitational parameter (km^3/s^2).
         r (float): Orbital radius (km).
@@ -15,7 +17,9 @@ def orbital_velocity(mu, r):
 
 
 def orbital_period(mu, a):
-    """Calculate the orbital period.
+    """
+    Calculate the orbital period.
+
     Args:
         mu (float): Gravitational parameter (km^3/s^2).
         a (float): Semi-major axis (km).
@@ -26,7 +30,9 @@ def orbital_period(mu, a):
 
 
 def escape_velocity(mu, r):
-    """Calculate the escape velocity.
+    """
+    Calculate the escape velocity.
+
     Args:
         mu (float): Gravitational parameter (km^3/s^2).
         r (float): Distance from the center of the body (km).
@@ -37,7 +43,9 @@ def escape_velocity(mu, r):
 
 
 def specific_orbital_energy(mu, r, v):
-    """Calculate the specific orbital energy.
+    """
+    Calculate the specific orbital energy.
+
     Args:
         mu (float): Gravitational parameter (km^3/s^2).
         r (float): Orbital radius (km).
@@ -49,7 +57,9 @@ def specific_orbital_energy(mu, r, v):
 
 
 def hohmann_transfer_delta_v(mu, r1, r2):
-    """Calculate the delta-V for a Hohmann transfer.
+    """
+    Calculate the delta-V for a Hohmann transfer.
+
     Args:
         mu (float): Gravitational parameter (km^3/s^2).
         r1 (float): Radius of the initial orbit (km).
@@ -68,7 +78,9 @@ def hohmann_transfer_delta_v(mu, r1, r2):
 
 
 def eccentricity(rp, ra):
-    """Calculate the eccentricity of an orbit.
+    """
+    Calculate the eccentricity of an orbit.
+
     Args:
         rp (float): Radius at periapsis (km).
         ra (float): Radius at apoapsis (km).
@@ -79,7 +91,9 @@ def eccentricity(rp, ra):
 
 
 def swath_width(altitude, fov):
-    """Calculate the swath width.
+    """
+    Calculate the swath width.
+
     Args:
         altitude (float): Satellite altitude (km).
         fov (float): Field of view (degrees).
@@ -90,7 +104,9 @@ def swath_width(altitude, fov):
 
 
 def plane_change_delta_v(v, delta_i):
-    """Calculate the delta-V for a plane change.
+    """
+    Calculate the delta-V for a plane change.
+    
     Args:
         v (float): Orbital velocity (km/s).
         delta_i (float): Inclination change (degrees).
